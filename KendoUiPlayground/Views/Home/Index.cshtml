@@ -22,21 +22,22 @@
                             url: "@Url.Action("Update", "Customer")",
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
-                            type: "POST"
+                            type: "PUT"
                         },
                         destroy: {
-                            url: crudServiceBaseUrl + "/Destroy",
+                            url: "@Url.Action("Destroy", "Customer")",
+                            dataType: "json",
+                            contentType: "application/json; charset=utf-8",
+                            type: "DELETE"
+                        },
+                        create: {
+                            url: "@Url.Action("Create", "Customer")",
                             dataType: "json",
                             contentType: "application/json; charset=utf-8",
                             type: "POST"
                         },
-                        create: {
-                            url: crudServiceBaseUrl + "/Create",
-                            dataType: "json",
-                            type: "POST"
-                        },
                         parameterMap: function(data, operation) {
-                            if (operation != "read") {
+                            if (operation !== "read") {
                                 return JSON.stringify(data.models);
                             } else {
                                 return JSON.stringify(data);
@@ -70,5 +71,13 @@
             });
         });
 
+
+        function setFirstFirstnameToSchnuppel() {
+            var dataItem = $("#grid").data("kendoGrid").dataSource.data()[0];
+            dataItem.set("firstname", "schnuppel");
+        }
     </script>
+    
+    <input type="button" onclick="setFirstFirstnameToSchnuppel()" value="set first firstname to schnuppel as a popup would do"/>
+
 </div>

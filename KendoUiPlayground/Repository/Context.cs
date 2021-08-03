@@ -21,14 +21,17 @@ namespace KendoUiPlayground.Repository
         {
             _customerList.Remove(GetById(id));
         }
-        public void Update(Customer customer)
+        public Customer Update(Customer customer)
         {
             _customerList[_customerList.FindIndex(c => c.Id == customer.Id)] 
                 = customer;
+            return customer;
         }
-        public void Insert(Customer customer)
+        public Customer Insert(Customer customer)
         {
+            customer.Id = Guid.NewGuid();
             _customerList.Add(customer);
+            return customer;
         }
 
     }

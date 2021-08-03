@@ -8,7 +8,7 @@ namespace KendoUiPlayground.Models
 {
     public class CustomerViewModel
     {
-        public Guid Id { get; set; }
+        public Guid? Id { get; set; }
         public Gender Gender { get; set; }
         public string Firstname { get; set; }
         public string Surname { get; set; }
